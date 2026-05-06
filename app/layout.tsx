@@ -5,6 +5,7 @@ import { Outfit } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 import AppShell from "./app-shell";
+import ClerkDevWarningFilter from "./clerk-dev-warning-filter";
 import "./globals.css";
 
 const fontSans = Outfit({
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${fontSans.variable} antialiased`}>
         <ClerkProvider>
+          <ClerkDevWarningFilter />
           <AppShell>{children}</AppShell>
           <Toaster richColors position="top-right" />
         </ClerkProvider>

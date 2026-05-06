@@ -1,25 +1,29 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const authorizedParties = (
-  process.env.CLERK_AUTHORIZED_PARTIES ?? process.env.NEXT_PUBLIC_APP_URL ?? ""
-)
-  .split(",")
-  .map((value) => value.trim())
-  .filter(Boolean);
-
 const isAuthPage = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
+const isProtectedPage = createRouteMatcher([
+  "/dashboard(.*)",
+  "/wallet(.*)",
+  "/stats(.*)",
+  "/todo(.*)",
+  "/notes(.*)",
+  "/links(.*)",
+]);
 
 export default clerkMiddleware(
   async (auth, req) => {
     const { userId } = await auth();
+
+    if (!userId && isProtectedPage(req)) {
+      const url = new URL("/sign-in", req.url);
+      return NextResponse.redirect(url);
+    }
+
     if (userId && isAuthPage(req)) {
       const url = new URL("/dashboard", req.url);
       return NextResponse.redirect(url);
     }
-  },
-  {
-    authorizedParties: authorizedParties.length > 0 ? authorizedParties : undefined,
   },
 );
 
