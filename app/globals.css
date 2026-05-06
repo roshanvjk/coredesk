@@ -1,26 +1,498 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(0.8452 0 0);
+  --foreground: oklch(0.2393 0 0);
+  --card: oklch(0.7572 0 0);
+  --card-foreground: oklch(0.2393 0 0);
+  --popover: oklch(0.7572 0 0);
+  --popover-foreground: oklch(0.2393 0 0);
+  --primary: oklch(0.5016 0.1887 27.4816);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.4955 0.0896 126.1858);
+  --secondary-foreground: oklch(1.0000 0 0);
+  --muted: oklch(0.7826 0 0);
+  --muted-foreground: oklch(0.4091 0 0);
+  --accent: oklch(0.5880 0.0993 245.7394);
+  --accent-foreground: oklch(1.0000 0 0);
+  --destructive: oklch(0.7076 0.1975 46.4558);
+  --destructive-foreground: oklch(0 0 0);
+  --border: oklch(0.4313 0 0);
+  --input: oklch(0.4313 0 0);
+  --ring: oklch(0.5016 0.1887 27.4816);
+  --chart-1: oklch(0.5016 0.1887 27.4816);
+  --chart-2: oklch(0.4955 0.0896 126.1858);
+  --chart-3: oklch(0.5880 0.0993 245.7394);
+  --chart-4: oklch(0.7076 0.1975 46.4558);
+  --chart-5: oklch(0.5656 0.0431 40.4319);
+  --sidebar: oklch(0.7572 0 0);
+  --sidebar-foreground: oklch(0.2393 0 0);
+  --sidebar-primary: oklch(0.5016 0.1887 27.4816);
+  --sidebar-primary-foreground: oklch(1.0000 0 0);
+  --sidebar-accent: oklch(0.5880 0.0993 245.7394);
+  --sidebar-accent-foreground: oklch(1.0000 0 0);
+  --sidebar-border: oklch(0.4313 0 0);
+  --sidebar-ring: oklch(0.5016 0.1887 27.4816);
+  --font-sans: "Oxanium", sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Source Code Pro", monospace;
+  --radius: 0px;
+  --shadow-x: 0px;
+  --shadow-y: 2px;
+  --shadow-blur: 4px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.4;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.20);
+  --shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.20);
+  --shadow-sm: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 1px 2px -1px hsl(0 0% 0% / 0.40);
+  --shadow: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 1px 2px -1px hsl(0 0% 0% / 0.40);
+  --shadow-md: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 2px 4px -1px hsl(0 0% 0% / 0.40);
+  --shadow-lg: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 4px 6px -1px hsl(0 0% 0% / 0.40);
+  --shadow-xl: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 8px 10px -1px hsl(0 0% 0% / 0.40);
+  --shadow-2xl: 0px 2px 4px 0px hsl(0 0% 0% / 1.00);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: oklch(0.2178 0 0);
+  --foreground: oklch(0.9067 0 0);
+  --card: oklch(0.2850 0 0);
+  --card-foreground: oklch(0.9067 0 0);
+  --popover: oklch(0.2850 0 0);
+  --popover-foreground: oklch(0.9067 0 0);
+  --primary: oklch(0.6083 0.2090 27.0276);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.6423 0.1467 133.0145);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.2645 0 0);
+  --muted-foreground: oklch(0.7058 0 0);
+  --accent: oklch(0.7482 0.1235 244.7492);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.7839 0.1719 68.0943);
+  --destructive-foreground: oklch(0 0 0);
+  --border: oklch(0.4091 0 0);
+  --input: oklch(0.4091 0 0);
+  --ring: oklch(0.6083 0.2090 27.0276);
+  --chart-1: oklch(0.6083 0.2090 27.0276);
+  --chart-2: oklch(0.6423 0.1467 133.0145);
+  --chart-3: oklch(0.7482 0.1235 244.7492);
+  --chart-4: oklch(0.7839 0.1719 68.0943);
+  --chart-5: oklch(0.6471 0.0334 40.7963);
+  --sidebar: oklch(0.1913 0 0);
+  --sidebar-foreground: oklch(0.9067 0 0);
+  --sidebar-primary: oklch(0.6083 0.2090 27.0276);
+  --sidebar-primary-foreground: oklch(1.0000 0 0);
+  --sidebar-accent: oklch(0.7482 0.1235 244.7492);
+  --sidebar-accent-foreground: oklch(0 0 0);
+  --sidebar-border: oklch(0.4091 0 0);
+  --sidebar-ring: oklch(0.6083 0.2090 27.0276);
+  --font-sans: "Oxanium", sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "Source Code Pro", monospace;
+  --radius: 0px;
+  --shadow-x: 0px;
+  --shadow-y: 2px;
+  --shadow-blur: 5px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.6;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-2xs: 0px 2px 5px 0px hsl(0 0% 0% / 0.30);
+  --shadow-xs: 0px 2px 5px 0px hsl(0 0% 0% / 0.30);
+  --shadow-sm: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 1px 2px -1px hsl(0 0% 0% / 0.60);
+  --shadow: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 1px 2px -1px hsl(0 0% 0% / 0.60);
+  --shadow-md: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 2px 4px -1px hsl(0 0% 0% / 0.60);
+  --shadow-lg: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 4px 6px -1px hsl(0 0% 0% / 0.60);
+  --shadow-xl: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 8px 10px -1px hsl(0 0% 0% / 0.60);
+  --shadow-2xl: 0px 2px 5px 0px hsl(0 0% 0% / 1.50);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--border) 92%, var(--foreground)) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklch, var(--muted-foreground) 55%, transparent);
+    border-radius: 9999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklch, var(--muted-foreground) 75%, transparent);
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .app-screen {
+    @apply min-h-screen bg-background p-4;
+  }
+
+  /* Page shell content: grows with content; shell main handles overflow-y-auto */
+  .app-screen-scroll {
+    @apply w-full min-h-0 bg-background p-4 md:p-6;
+  }
+
+  .app-scroll-inner {
+    @apply w-full max-w-full p-5 md:p-7;
+  }
+
+  .app-panel {
+    @apply rounded-sm border border-border bg-card text-card-foreground shadow-sm;
+  }
+
+  .app-card {
+    @apply rounded-xl border border-border bg-card p-4 text-card-foreground;
+  }
+
+  .app-heading {
+    @apply text-3xl font-bold text-foreground;
+  }
+
+  .app-title-page {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .app-title-section {
+    @apply text-lg font-semibold text-foreground;
+  }
+
+  .app-title-inline {
+    @apply text-xl font-semibold text-foreground;
+  }
+
+  .app-subtext {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .app-stat-label {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .app-stat-value {
+    @apply text-3xl font-semibold text-foreground;
+  }
+
+  .app-stat-value-md {
+    @apply text-2xl font-semibold text-foreground;
+  }
+
+  .app-body-text {
+    @apply text-sm text-foreground/90;
+  }
+
+  .app-label {
+    @apply mb-2 block text-sm font-medium text-foreground;
+  }
+
+  .app-label-inline {
+    @apply mb-1 block text-sm font-medium text-foreground;
+  }
+
+  .app-inset {
+    @apply rounded-lg bg-muted p-3;
+  }
+
+  .app-list-row {
+    @apply rounded-md bg-muted p-2 text-sm text-foreground;
+  }
+
+  .app-input {
+    @apply h-10 w-full rounded-sm border border-input bg-background px-3 text-sm text-foreground outline-none focus:border-primary;
+  }
+
+  .app-input-rounded {
+    @apply h-10 w-full rounded-xl border border-input bg-background px-4 text-sm text-foreground outline-none focus:border-primary;
+  }
+
+  .app-input-compact {
+    @apply h-8 w-full rounded-md border border-input bg-background px-2 text-xs text-foreground outline-none focus:border-primary;
+  }
+
+  /* Native date picker: readable in dark/light and easy to tap */
+  .app-input-date {
+    @apply block min-h-11 w-full cursor-pointer rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-1 focus:ring-ring;
+  }
+
+  .dark .app-input-date {
+    color-scheme: dark;
+  }
+
+  .app-textarea {
+    @apply min-h-24 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-primary;
+  }
+
+  .app-select {
+    @apply h-10 w-full rounded-lg border border-input bg-background px-3 text-sm text-foreground outline-none focus:border-primary;
+  }
+
+  .app-btn-primary {
+    @apply inline-flex h-10 w-full items-center justify-center rounded-sm bg-primary text-sm font-semibold text-primary-foreground transition hover:opacity-90;
+  }
+
+  .app-btn-outline {
+    @apply inline-flex h-10 w-full items-center justify-center rounded-sm border border-input bg-background text-sm font-semibold text-foreground transition hover:bg-muted;
+  }
+
+  .app-btn-sm {
+    @apply h-9 rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground hover:opacity-90;
+  }
+
+  .app-btn-md {
+    @apply h-10 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-60;
+  }
+
+  .app-btn-md-outline {
+    @apply flex size-10 shrink-0 items-center justify-center rounded-xl border border-input bg-background text-foreground hover:bg-muted disabled:opacity-50;
+  }
+
+  .app-btn-inline-primary {
+    @apply h-11 self-end rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-60;
+  }
+
+  .app-btn-icon {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground hover:opacity-90;
+  }
+
+  .app-btn-pill {
+    @apply rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-60;
+  }
+
+  .app-btn-pill-sm {
+    @apply rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90;
+  }
+
+  .app-btn-ghost-row {
+    @apply rounded bg-muted px-2 py-1 text-xs text-foreground hover:bg-muted/80;
+  }
+
+  .app-btn-danger-row {
+    @apply rounded bg-destructive/20 px-2 py-1 text-xs text-destructive hover:bg-destructive/30 disabled:opacity-60;
+  }
+
+  .app-tab {
+    @apply rounded-md px-3 py-1.5 text-sm text-muted-foreground;
+  }
+
+  .app-tab-active {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .app-task-card {
+    @apply w-full rounded-xl border border-border bg-card p-3.5 shadow-sm;
+  }
+
+  .app-menu {
+    @apply absolute right-0 top-8 z-10 min-w-28 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md;
+  }
+
+  .app-menu-item {
+    @apply block w-full rounded px-2 py-1 text-left text-sm text-foreground hover:bg-muted;
+  }
+
+  .app-menu-item-danger {
+    @apply block w-full rounded px-2 py-1 text-left text-sm text-destructive hover:bg-destructive/10;
+  }
+
+  .app-progress-track {
+    @apply h-2 bg-muted;
+  }
+
+  .app-progress-fill {
+    @apply bg-primary;
+  }
+
+  .app-pill-muted {
+    @apply rounded-md bg-muted px-2 py-0.5 text-xs font-medium capitalize text-foreground;
+  }
+
+  .app-wallet-search {
+    @apply ml-auto flex h-10 w-full items-center gap-2 rounded-lg border border-border bg-muted px-3 md:w-1/3;
+  }
+
+  .app-wallet-grid-head {
+    @apply grid grid-cols-[1fr_1.2fr_1.2fr_1fr_1.2fr_0.8fr_0.9fr] gap-3 border-b border-border pb-2 text-xs text-muted-foreground;
+  }
+
+  .app-wallet-grid-row {
+    @apply grid grid-cols-[1fr_1.2fr_1.2fr_1fr_1.2fr_0.8fr_0.9fr] items-center gap-3 border-b border-border py-3;
+  }
+
+  .app-wallet-modal-overlay {
+    @apply fixed inset-0 z-40 flex items-center justify-center bg-black/50;
+  }
+
+  .app-wallet-modal {
+    @apply w-full max-w-lg space-y-3 rounded-xl border border-border bg-card p-4 text-sm text-card-foreground;
+  }
+
+  .app-wallet-submit {
+    @apply mt-2 h-9 w-full rounded-full bg-primary text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-60;
+  }
+
+  .app-badge-flow-credit {
+    @apply rounded-full bg-secondary/25 px-3 py-1 text-xs font-medium text-secondary-foreground;
+  }
+
+  .app-badge-flow-debit {
+    @apply rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground;
+  }
+
+  .app-badge-ok {
+    @apply rounded-full bg-secondary/25 px-3 py-1 text-xs font-medium text-secondary-foreground;
+  }
+
+  .app-badge-bad {
+    @apply rounded-full bg-destructive/20 px-3 py-1 text-xs font-medium text-destructive;
+  }
+
+  .app-links-sidebar {
+    @apply border-r border-border bg-background p-4;
+  }
+
+  .app-links-selected {
+    @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  .app-links-icon-btn {
+    @apply shrink-0 rounded-md border border-border/50 bg-foreground/5 p-1.5 text-primary hover:bg-foreground/10;
+  }
+
+  .app-notes-search {
+    @apply flex h-11 w-full items-center gap-2 rounded-full border border-input bg-background px-3 md:ml-auto md:w-1/4;
+  }
+
+  .app-note-card {
+    @apply rounded-xl border border-border bg-card py-0 shadow-none;
+  }
+
+  .app-note-title {
+    @apply text-[13px] font-semibold leading-4 text-card-foreground;
+  }
+
+  .app-note-preview {
+    @apply text-[12px] leading-5 text-muted-foreground;
+  }
+
+  .app-icon-btn {
+    @apply rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-primary;
+  }
+
+  .app-icon-btn-danger {
+    @apply rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-destructive;
+  }
+
+  .app-fab {
+    @apply fixed bottom-4 right-4 z-40 flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg hover:opacity-90;
+  }
+
+  .app-dialog-surface {
+    @apply border-border bg-card text-card-foreground sm:max-w-xl [&_[data-slot=dialog-close]]:text-muted-foreground;
+  }
+
+  .app-btn-link {
+    @apply text-sm font-medium text-primary hover:underline;
+  }
+
+  .app-alert-surface {
+    @apply border-border bg-card text-card-foreground [&_[data-slot=alert-dialog-description]]:text-muted-foreground;
+  }
+
+  .app-alert-cancel {
+    @apply border-input bg-muted text-foreground;
+  }
+
+  .app-error-text {
+    @apply text-sm text-destructive;
+  }
+
+  .app-auth-hero {
+    @apply absolute inset-0 bg-gradient-to-br from-primary to-accent;
+  }
+
+  .app-auth-hero-symbol {
+    @apply h-52 w-52 rounded-[2.5rem] bg-primary-foreground/15 shadow-2xl ring-1 ring-primary-foreground/30 backdrop-blur-sm;
+  }
+
+  .app-sidebar-link {
+    @apply flex items-center gap-2 rounded-md px-2 py-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground;
+  }
+
+  .app-sidebar-cta {
+    @apply flex w-full items-center gap-2 rounded-md bg-sidebar-accent px-2 py-2 text-sm hover:bg-sidebar-accent/80;
+  }
 }
