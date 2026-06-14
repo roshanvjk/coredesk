@@ -81,7 +81,7 @@ function LinkEditorForm({
         <label htmlFor="link-url" className="app-label-inline">
           Link
         </label>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <input
             id="link-url"
             required
@@ -91,7 +91,7 @@ function LinkEditorForm({
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             disabled={!canEdit}
-            className="app-input-rounded flex-1"
+            className="app-input-rounded min-w-0 flex-1 basis-[12rem]"
             placeholder="Add a Link"
           />
           <button
@@ -259,7 +259,7 @@ export default function LinksClient({ initialLinks }: LinksClientProps) {
   }
 
   return (
-    <main className="relative min-h-screen bg-background p-0">
+    <main className="relative min-h-full bg-background p-0">
       <div className="pointer-events-none absolute -left-[9999px] top-0 opacity-0" aria-hidden>
         {LINK_CARD_PALETTES.map((palette) => (
           <span key={palette} className={palette} />
@@ -332,8 +332,8 @@ export default function LinksClient({ initialLinks }: LinksClientProps) {
             </div>
           </aside>
 
-          <section className="p-4">
-            <div className="flex items-center justify-between pb-4">
+          <section className="p-3 sm:p-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4">
               <h1 className="app-title-inline">
                 {selectedId === null ? "New link" : "Edit link"}
               </h1>

@@ -192,11 +192,11 @@ export default function WalletClient({ initialEntries }: WalletClientProps) {
       <section className="mx-auto w-full max-w-[1500px]">
         <header className="mb-4 flex items-center gap-2">
           <div className="app-wallet-search">
-            <Search size={16} className="text-muted-foreground" />
+            <Search size={16} className="shrink-0 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search payments..."
-              className="w-full bg-transparent text-xs outline-none placeholder:text-muted-foreground"
+              className="min-w-0 w-full bg-transparent text-xs outline-none placeholder:text-muted-foreground"
               readOnly
             />
           </div>
@@ -206,7 +206,7 @@ export default function WalletClient({ initialEntries }: WalletClientProps) {
               setForm({ ...defaultForm, date: formatTodayIso() });
               setShowForm(true);
             }}
-            className="app-btn-icon"
+            className="app-btn-icon shrink-0"
             aria-label="Add payment"
           >
             <Plus size={18} />
@@ -214,7 +214,7 @@ export default function WalletClient({ initialEntries }: WalletClientProps) {
         </header>
 
         <div className="mb-3">
-          <h2 className="text-3xl font-semibold text-foreground">Payments</h2>
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">Payments</h2>
         </div>
 
         <div className="app-wallet-grid-head">
@@ -269,6 +269,58 @@ export default function WalletClient({ initialEntries }: WalletClientProps) {
             </div>
           </div>
         ))}
+
+        <div className="space-y-3 md:hidden">
+          {sortedEntries.map((row) => (
+            <article key={row.id} className="app-wallet-card">
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <span
+                  className={row.flow === "Credited" ? "app-badge-flow-credit" : "app-badge-flow-debit"}
+                >
+                  {row.flow}
+                </span>
+                <span
+                  className={row.status === "Completed" ? "app-badge-ok" : "app-badge-bad"}
+                >
+                  {row.status}
+                </span>
+              </div>
+              <div className="app-wallet-card-row">
+                <span className="app-wallet-card-label">Price</span>
+                <span className="app-wallet-card-value">{row.price}</span>
+              </div>
+              <div className="app-wallet-card-row">
+                <span className="app-wallet-card-label">To</span>
+                <span className="app-wallet-card-value">{row.to}</span>
+              </div>
+              <div className="app-wallet-card-row">
+                <span className="app-wallet-card-label">Date</span>
+                <span className="app-wallet-card-value">{formatDateDdMmYyyy(row.date)}</span>
+              </div>
+              <div className="app-wallet-card-row border-t border-border pt-3">
+                <span className="app-wallet-card-label">Reason</span>
+                <span className="app-wallet-card-value">{row.reason}</span>
+              </div>
+              <div className="mt-3 flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => onEdit(row)}
+                  className="app-btn-ghost-row"
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  disabled={isDeleting}
+                  onClick={() => setDeleteId(row.id)}
+                  className="app-btn-danger-row"
+                >
+                  Delete
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       {showForm ? (
@@ -294,7 +346,7 @@ export default function WalletClient({ initialEntries }: WalletClientProps) {
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <select
                 value={form.flow}
                 onChange={(e) => update("flow", e.target.value as PaymentFlow)}

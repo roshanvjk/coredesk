@@ -195,8 +195,8 @@ export default function NotesClient({ initialNotes }: NotesClientProps) {
   return (
     <main className="app-screen text-foreground">
       <div className="w-full px-3 py-3 md:px-4">
-        <header className="mb-3 flex items-center justify-end gap-2">
-          <div className="app-notes-search">
+        <header className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end">
+          <div className="app-notes-search w-full sm:w-auto">
             <Search size={16} className="text-muted-foreground" />
             <input
               type="text"

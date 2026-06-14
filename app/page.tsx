@@ -10,7 +10,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="app-screen flex items-center p-3 md:p-4">
+    <div className="app-screen flex min-h-dvh items-center p-3 sm:p-4">
       <main className="app-panel mx-auto flex w-full max-w-5xl overflow-x-hidden">
         <section className="relative hidden w-1/2 lg:block">
           <div className="app-auth-hero absolute inset-0" />
@@ -19,7 +19,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="flex w-full items-center justify-center px-6 py-8 lg:w-1/2 lg:px-10 lg:py-10">
+        <section className="flex w-full items-center justify-center px-4 py-6 sm:px-6 sm:py-8 lg:w-1/2 lg:px-10 lg:py-10">
           <div className="w-full max-w-sm">
             <h1 className="app-heading">Log In</h1>
             <p className="app-subtext mt-3">
